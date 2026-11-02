@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1133">
+<title>مصنع الصواريخ الخارقة | رحلة السلوك الرقمي الآمن</title>
+<style>
+:root{--ink:#151c4e;--white:#fff;--mint:#78ffce;--gold:#ffdc75;--pink:#ff8ecb;--purple:#9c8bff;--cyan:#75e4ff}
+*{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;font-family:Tahoma,'Arial Rounded MT Bold',Arial,sans-serif}body{background:#080e2d;color:#fff;overflow:hidden;touch-action:pan-y}
+button{font-family:inherit;cursor:pointer}button:focus-visible,[tabindex]:focus-visible{outline:4px solid #fff892;outline-offset:4px}
+#space{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.game{position:relative;width:100%;height:100vh;height:100dvh;min-height:680px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 51% 55%,#2920688c 0%,#0b1235 55%,#090d2b 100%)}
+.game:before{content:"";position:absolute;inset:-15%;background:radial-gradient(ellipse 28% 39% at 18% 31%,#6632a45b,transparent 80%),radial-gradient(ellipse 32% 34% at 85% 72%,#087bad48,transparent 82%),radial-gradient(ellipse 20% 20% at 65% 8%,#b3429160,transparent 85%);filter:blur(35px);animation:nebula 17s ease-in-out infinite alternate;pointer-events:none}
+@keyframes nebula{to{transform:translate3d(4%,-3%,0) scale(1.13);filter:blur(49px)}}
+.game:after{content:"";position:absolute;left:50%;top:19%;height:76%;width:min(39vw,430px);transform:translateX(-50%);background:linear-gradient(90deg,transparent,#7c9ef514 48%,transparent);border-radius:50%;z-index:0;pointer-events:none}
+.decor{position:absolute;z-index:1;opacity:.42;pointer-events:none;animation:drift 10s ease-in-out infinite alternate}.decor svg{width:100%;height:100%}.decor.d1{left:8%;top:25%;width:106px;transform:rotate(-16deg)}.decor.d2{right:7%;top:44%;width:74px;animation-delay:-5s}.decor.d3{left:21%;bottom:17%;width:52px;animation-delay:-2s}
+@keyframes drift{to{translate:0 -24px;rotate:9deg}}
+.topbar{position:absolute;z-index:25;top:0;left:0;right:0;padding:19px clamp(18px,3vw,48px);display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;justify-self:start;max-width:330px}.logo{display:grid;place-items:center;width:54px;height:54px;background:linear-gradient(135deg,#a994ff,#f78db9);box-shadow:0 7px 0 #6f4b92,0 0 25px #ba8fff55;border:3px solid #e5d7ff;border-radius:19px;rotate:-8deg;flex-shrink:0}.logo svg{width:35px;height:35px}.brand strong{font-size:clamp(16px,1.65vw,25px);line-height:1.3;text-shadow:0 3px 0 #302b70;display:block}.brand small{display:block;color:#c5caff;font-weight:700;font-size:12px;margin-top:5px}
+.progress-box{width:clamp(230px,34vw,470px);background:#151b4ec7;border:2px solid #7786dc7d;border-radius:23px;padding:10px 17px 12px;box-shadow:0 9px 32px #05061f6a,inset 0 1px #ffffff2a;backdrop-filter:blur(9px)}.progress-line{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:900;margin-bottom:9px}.progress-line span:last-child{color:#ffee9b;font-size:17px}.progress-track{height:16px;border-radius:30px;background:#030827;border:2px solid #7180d06e;overflow:hidden;padding:2px}.progress-fill{height:100%;width:0;border-radius:25px;background:linear-gradient(90deg,#57d8ff,#8cffc5,#fcf68c);box-shadow:0 0 14px #63ffe0;transition:width .7s cubic-bezier(.2,.9,.2,1)}
+.tools{display:flex;justify-self:end;gap:9px}.tool{background:#252c65cf;border:2px solid #8698f0b0;color:#fff;width:47px;height:47px;border-radius:16px;display:grid;place-items:center;box-shadow:0 5px 0 #10133b}.tool:hover{background:#3b4692;transform:translateY(-2px)}.tool svg{width:25px;height:25px;stroke:currentColor;fill:none;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round}
+.mission{z-index:15;position:absolute;top:clamp(106px,13.2vh,135px);left:50%;transform:translateX(-50%);width:min(720px,calc(100% - 32px));filter:drop-shadow(0 14px 0 #070d2a70)}.mission .label{position:absolute;left:50%;transform:translateX(-50%);top:-16px;white-space:nowrap;background:#ffdf79;color:#29204e;border:3px solid white;border-radius:99px;font-size:15px;font-weight:900;padding:5px 19px;z-index:2;box-shadow:0 4px 0 #de9b64}
+.question-card{display:flex;align-items:center;gap:19px;width:100%;padding:17px 22px;background:linear-gradient(135deg,#fdf9ff,#e4edff);border:5px solid #fff;border-radius:29px;min-height:139px;box-shadow:0 0 0 5px #8c8af2,0 10px 0 #4b4ca1;touch-action:none;cursor:grab;color:#202656;user-select:none;position:relative}.question-card:active{cursor:grabbing}.question-card.slide-in{animation:cardIn .42s cubic-bezier(.2,1.6,.4,1)}@keyframes cardIn{from{transform:translateY(-25px) scale(.92);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+.scene-illustration{flex-shrink:0;width:114px;height:105px;background:linear-gradient(145deg,#cfdeff,#d9c6ff);border-radius:22px;border:3px solid #9994db;display:grid;place-items:center;overflow:hidden;box-shadow:inset 0 3px #fff9}.scene-illustration svg{width:100%;height:100%}.mission-copy{flex:1}.mission-copy .eyebrow{color:#8273c2;font-weight:900;font-size:13px;margin:0 0 7px}.mission-copy h1{font-size:clamp(18px,2.15vw,29px);margin:0;font-weight:900;line-height:1.5;color:#1e2556}.mission-copy p{font-size:12px;margin:5px 0 0;color:#74759c;font-weight:700}
+.conveyor{width:84%;height:23px;margin:14px auto -4px;border-radius:15px;border:4px solid #788cdc;background:repeating-linear-gradient(90deg,#374685 0 17px,#1c285b 17px 36px);box-shadow:0 5px 0 #0e1545;animation:belt 1s linear infinite;position:relative;z-index:-1}.conveyor:before,.conveyor:after{content:"";position:absolute;top:5px;width:10px;height:10px;border:3px solid #b7d8ff;background:#616cb4;border-radius:50%}.conveyor:before{left:-9px}.conveyor:after{right:-9px}@keyframes belt{to{background-position:36px 0}}
+.speak{width:48px;height:48px;flex-shrink:0;border:none;border-radius:16px;background:#fff;box-shadow:0 4px 0 #bdc2f6;display:grid;place-items:center;color:#6568c1}.speak svg{width:27px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round}
+.rocket-zone{position:absolute;z-index:4;inset:26% 0 7%;pointer-events:none;display:flex;align-items:center;justify-content:center}.rocket-wrap{position:relative;width:clamp(265px,32vw,400px);height:min(54vh,505px);max-height:505px;animation:floaty 2.1s ease-in-out infinite alternate;filter:drop-shadow(0 14px 21px #060a2866)}.rocket-svg{height:100%;width:100%;overflow:visible;filter:drop-shadow(0 0 17px #6edaff39)}
+@keyframes floaty{to{transform:translateY(-13px) rotate(-1.2deg)}}
+.rocket-wrap.boost{animation:booster 1s ease-in-out forwards}.rocket-wrap.bump{animation:bumpy .75s ease-in-out both}.rocket-wrap.victory-fly{animation:winningRocket 3.4s ease-in-out infinite alternate}
+@keyframes booster{0%{transform:translateY(0) scale(1)}30%{transform:translateY(57px) scale(.97)}55%{transform:translateY(-110px) scale(1.10)}100%{transform:translateY(-19px) scale(1)}}
+@keyframes bumpy{0%,100%{transform:translate(0,0) rotate(0)}24%{transform:translate(-23px,10px) rotate(-9deg)}40%{transform:translate(20px,-7px) rotate(8deg)}58%{transform:translate(-10px,4px) rotate(-4deg)}75%{transform:translate(6px,0) rotate(2deg)}}
+@keyframes winningRocket{to{transform:translateY(-60px) rotate(4deg) scale(.93)}}
+.flame{transform-origin:center 365px;animation:flame 135ms infinite alternate ease-in-out}.flame.middle{animation-duration:110ms}.rocket-wrap.boost .flame{transform:scaleY(1.45)!important;animation-duration:65ms;filter:drop-shadow(0 0 13px #ffe875)}
+@keyframes flame{to{transform:scaleY(1.13) scaleX(.89)}}.pilot-hand{transform-origin:195px 236px;animation:wave 1.7s ease-in-out infinite alternate}@keyframes wave{to{transform:rotate(21deg)}}
+.rocket-aura{position:absolute;left:50%;top:46%;width:62%;height:55%;transform:translate(-50%,-50%);border:2px solid #a5dfff24;border-radius:50%;filter:blur(6px);animation:aura 3s ease-in-out infinite alternate;z-index:-1}@keyframes aura{to{box-shadow:0 0 70px 25px #66cafa44;scale:1.3}}
+.answer-row{position:absolute;z-index:18;bottom:clamp(22px,4vh,46px);left:clamp(18px,4vw,70px);right:clamp(18px,4vw,70px);display:flex;align-items:flex-end;justify-content:space-between;gap:10px;pointer-events:none}.choice{pointer-events:auto;display:flex;align-items:center;gap:14px;width:clamp(230px,25.7vw,335px);min-height:109px;padding:14px 16px;border:4px solid #fff;border-radius:27px;box-shadow:0 8px 0 #0b1235,0 13px 27px #04051a80,inset 0 2px #ffffff66;transition:transform .16s,box-shadow .16s;position:relative;text-align:right;color:#132d53}.choice:hover:not(:disabled),.choice.drag-over{transform:translateY(-8px) scale(1.03);box-shadow:0 15px 0 #0b1235,0 22px 30px #04051a80}.choice:active:not(:disabled){transform:translateY(3px)}.choice:disabled{cursor:default;opacity:.8}.choice.safe{background:linear-gradient(135deg,#a5ffe0,#61efcc)}.choice.unsafe{background:linear-gradient(135deg,#ffd4ee,#ffa0bc)}.choice .choice-icon{background:#ffffffba;width:66px;height:66px;border-radius:19px;display:grid;place-items:center;border:2px solid #fff;flex-shrink:0;box-shadow:0 4px 0 #00000012}.choice svg{width:44px;height:44px}.choice strong{font-size:clamp(19px,2vw,28px);line-height:1.35;display:block}.choice small{font-size:12px;font-weight:bold;opacity:.75;line-height:1.6;display:block;margin-top:3px}.choice .number{position:absolute;top:-17px;right:-12px;background:#fff;color:#504b94;width:31px;height:31px;border-radius:50%;display:grid;place-items:center;border:3px solid #8e86da;font-weight:900}
+.feedback{position:absolute;left:50%;bottom:clamp(154px,18vh,177px);transform:translateX(-50%) scale(.8);z-index:30;min-width:240px;max-width:min(500px,88vw);font-size:clamp(16px,1.8vw,22px);font-weight:900;text-align:center;padding:14px 22px;border:4px solid white;border-radius:22px;box-shadow:0 7px 0 #151b4a,0 13px 28px #07092a77;opacity:0;pointer-events:none;transition:opacity .18s,transform .2s}.feedback.visible{opacity:1;transform:translateX(-50%) scale(1)}.feedback.good{background:#93ffe0;color:#124b50}.feedback.try{background:#ffe598;color:#5a3c43}
+.trail-label{position:absolute;z-index:2;left:50%;bottom:15%;transform:translateX(-50%);font-size:13px;font-weight:900;color:#d5dcff72;letter-spacing:1px;pointer-events:none}
+.drag-ghost{position:fixed;z-index:80;pointer-events:none;width:225px;min-height:82px;padding:14px;background:#fff;border:4px solid #b7a3ff;border-radius:23px;color:#242456;font-size:17px;font-weight:900;text-align:center;box-shadow:0 13px 40px #080d4277;transform:translate(-50%,-50%) rotate(-6deg)}
+.flying-card{position:fixed;z-index:45;pointer-events:none;padding:14px 20px;max-width:310px;border-radius:18px;border:3px solid white;background:#f8f4ff;color:#27264f;font-weight:900;text-align:center;box-shadow:0 0 23px #fff8;transform-origin:center}
+.hit-comet{position:fixed;z-index:22;width:170px;height:120px;pointer-events:none;filter:drop-shadow(0 0 15px #ffa578)}.hit-comet svg{width:100%;height:100%}.impact-flash{position:fixed;z-index:24;width:145px;height:145px;transform:translate(-50%,-50%);border:10px solid #ffe48b;border-radius:50%;box-shadow:0 0 0 12px #ff8ec077,0 0 40px #fffaa3;animation:impactFlash .5s forwards;pointer-events:none}@keyframes impactFlash{to{opacity:0;scale:1.9}}
+.victory{display:none;position:absolute;z-index:30;inset:0;justify-content:center;align-items:center;flex-direction:column;pointer-events:none;text-align:center}.game.completed .victory{display:flex}.game.completed .mission,.game.completed .answer-row,.game.completed .trail-label,.game.completed .feedback{display:none!important}.game.completed .rocket-zone{inset:36% 0 4%}.game.completed .rocket-wrap{width:clamp(210px,24vw,310px);height:clamp(280px,42vh,390px)}
+.final-planet{width:clamp(230px,31vw,340px);height:clamp(210px,35vh,340px);position:absolute;top:12%;left:50%;transform:translateX(-50%);opacity:0;animation:planetAppear 1.6s .1s both cubic-bezier(.18,1.4,.3,1);filter:drop-shadow(0 0 36px #a778ffab)}.final-planet svg{width:100%;height:100%;overflow:visible;animation:slowSpin 9s ease-in-out infinite alternate}@keyframes planetAppear{from{opacity:0;transform:translate(-50%,-130%) scale(.25)}to{opacity:1;transform:translate(-50%,0) scale(1)}}@keyframes slowSpin{to{transform:rotate(7deg)}}
+.victory-message{position:absolute;bottom:clamp(35px,5vh,60px);width:min(600px,calc(100% - 28px));padding:15px 20px;background:#191b54e8;border:3px solid #efe3ff;border-radius:29px;box-shadow:0 0 30px #6d73ff80;backdrop-filter:blur(12px);animation:msgAppear 1s 1.3s both;pointer-events:auto}@keyframes msgAppear{from{opacity:0;transform:translateY(45px)}to{opacity:1;transform:translateY(0)}}.victory-message h2{margin:0 0 4px;font-size:clamp(22px,3.2vw,35px);color:#ffeb87;text-shadow:0 3px #8044a0}.victory-message p{margin:4px 0 12px;font-weight:bold;font-size:clamp(12px,1.5vw,18px);line-height:1.65}.again{border:3px solid #fff;background:linear-gradient(135deg,#96f5ff,#b2ffa0);border-radius:19px;padding:11px 24px;color:#22325e;font-weight:900;font-size:16px;box-shadow:0 5px 0 #426c8d}.again:hover{transform:translateY(-3px)}
+.intro{position:absolute;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:#070b27c7;backdrop-filter:blur(10px);padding:16px;transition:opacity .55s}.intro.hidden{opacity:0;pointer-events:none}.intro-box{width:min(600px,96vw);padding:26px 30px 28px;background:linear-gradient(145deg,#43317f,#212759);border:4px solid #dcd4ff;border-radius:33px;text-align:center;box-shadow:0 15px 0 #101037,0 0 80px #8976ff6b}.intro-art{height:145px;margin:auto auto 6px;display:block;filter:drop-shadow(0 0 20px #98edffbb)}.intro-box .tag{background:#ffe584;color:#51366a;display:inline-block;border-radius:99px;padding:5px 19px;font-size:14px;font-weight:900}.intro-box h2{font-size:clamp(27px,4.1vw,43px);margin:12px 0 10px;color:#fff}.intro-box p{line-height:1.95;color:#e8e3ff;font-size:clamp(15px,1.7vw,19px);margin:0 0 16px}.start{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#ffde6f,#ffa5bc);color:#34255c;border:4px solid white;padding:14px 38px;border-radius:22px;font-size:25px;font-weight:900;box-shadow:0 8px 0 #b76b84;transition:transform .2s}.start:hover{transform:translateY(-4px)}
+@media(max-width:900px){.topbar{grid-template-columns:auto 1fr auto;gap:8px;padding:14px}.brand small{display:none}.brand strong{font-size:15px}.logo{width:42px;height:42px;border-radius:13px}.logo svg{width:27px}.progress-box{width:min(36vw,290px);padding:8px 10px}.progress-line{font-size:11px}.progress-line span:last-child{font-size:13px}.tool{width:42px;height:42px}.mission{top:106px}.choice{width:min(34vw,260px);gap:8px;padding:9px;min-height:94px;border-radius:20px}.choice .choice-icon{width:52px;height:52px;border-radius:14px}.choice svg{width:38px;height:38px}.choice strong{font-size:19px}.choice small{font-size:10px}.answer-row{left:15px;right:15px}.rocket-wrap{width:310px}}
+@media(max-width:570px){.game{min-height:620px}.topbar{grid-template-columns:1fr auto;align-items:center}.brand{grid-column:1;grid-row:1}.brand strong{font-size:14px}.tools{grid-column:2;grid-row:1}.progress-box{grid-column:1/-1;grid-row:2;justify-self:center;width:min(94vw,460px);padding:5px 11px;border-radius:14px}.progress-line{margin-bottom:4px}.progress-track{height:11px}.topbar{row-gap:6px}.mission{top:clamp(128px,16vh,155px);width:calc(100% - 28px)}.mission .label{font-size:12px;padding:4px 12px}.question-card{padding:12px;gap:10px;min-height:116px;border-width:3px;border-radius:22px;box-shadow:0 0 0 3px #8c8af2,0 6px 0 #4b4ca1}.scene-illustration{width:75px;height:79px;border-radius:15px}.mission-copy h1{font-size:clamp(16px,4.5vw,22px);line-height:1.4}.mission-copy .eyebrow{font-size:10px;margin-bottom:3px}.mission-copy p{font-size:10px}.speak{width:32px;height:34px;border-radius:10px}.speak svg{width:19px}.rocket-zone{inset:28% 0 13%}.rocket-wrap{width:clamp(225px,55vw,300px);height:clamp(270px,43vh,365px)}.answer-row{bottom:clamp(18px,3vh,28px);left:10px;right:10px;gap:8px}.choice{min-height:83px;width:calc(50% - 3px);border-width:3px;border-radius:20px;padding:9px;gap:7px}.choice .choice-icon{width:43px;height:43px;border-radius:12px}.choice svg{width:31px;height:31px}.choice strong{font-size:clamp(15px,4.2vw,21px)}.choice small{font-size:9px}.feedback{bottom:115px;font-size:14px;padding:10px 12px}.trail-label{display:none}.final-planet{top:17%;width:260px;height:260px}.game.completed .rocket-zone{inset:35% 0 9%}.game.completed .rocket-wrap{height:260px;width:230px}.victory-message{bottom:18px;padding:12px}.victory-message p{margin:0 0 8px}}
+@media(max-height:740px) and (min-width:571px){.mission{top:92px}.question-card{min-height:108px;padding:10px 17px}.scene-illustration{height:87px;width:91px}.rocket-zone{inset:25% 0 10%}.rocket-wrap{height:48vh}.choice{min-height:90px}.answer-row{bottom:18px}.feedback{bottom:117px}}
+@media(prefers-reduced-motion:reduce){.decor,.game:before,.rocket-wrap,.flame,.pilot-hand,.rocket-aura,.final-planet svg{animation-duration:4s}}
+</style>
+</head>
+<body>
+<div class="game" id="game">
+  <canvas id="space" aria-hidden="true"></canvas>
+  <!-- زخارف مجرية مرسومة يدويًا بواسطة SVG، بلا صور خارجية -->
+  <div class="decor d1" aria-hidden="true"><svg viewBox="0 0 120 140"><path d="M61 10L73 54L114 69L74 82L60 125L45 84L7 70L46 56Z" fill="#76e5ff" stroke="#bde8ff" stroke-width="4"/><circle cx="60" cy="69" r="15" fill="#fff2ab"/></svg></div>
+  <div class="decor d2" aria-hidden="true"><svg viewBox="0 0 120 120"><path d="M60 8L73 43L112 57L75 72L61 110L46 72L9 58L45 43Z" fill="#ff94d9"/><circle cx="60" cy="59" r="8" fill="white"/></svg></div>
+  <div class="decor d3" aria-hidden="true"><svg viewBox="0 0 120 120"><path d="M60 8L73 43L112 57L75 72L61 110L46 72L9 58L45 43Z" fill="#d6f78d"/></svg></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 4Q4 19 14 34L26 34Q36 19 20 4Z" fill="#fff" stroke="#303073" stroke-width="2"/><circle cx="20" cy="19" r="6" fill="#74d9fa" stroke="#3f4684" stroke-width="2"/><path d="M16 34L20 40L24 34" fill="#ffdb6b"/></svg></div>
+      <div><strong>مصنع الصواريخ الخارقة</strong><small>مغامرة الأمان الرقمي</small></div>
+    </div>
+    <div class="progress-box" aria-label="تقدم الرحلة">
+      <div class="progress-line"><span>مهمات الرحلة الفضائية</span><span id="progressText">٠ من ١١</span></div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="tools">
+      <button class="tool" id="soundBtn" title="تشغيل أو إيقاف الصوت" aria-label="إيقاف الأصوات">
+        <svg viewBox="0 0 24 24" id="soundIcon"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8q4 4 0 8M19 5q7 7 0 14"/></svg>
+      </button>
+      <button class="tool" id="restartBtn" title="إعادة اللعب" aria-label="إعادة اللعب">
+        <svg viewBox="0 0 24 24"><path d="M3 11a9 9 0 1 1 2.6 6.4"/><path d="M3 4v7h7"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="mission" id="mission" aria-label="بطاقة التصرف">
+    <div class="label" id="missionLabel">المهمة ١</div>
+    <div class="question-card slide-in" id="questionCard" tabindex="0" aria-label="اسحب بطاقة التصرف إلى الزر المناسب، أو اختر أحد الزرين">
+      <div class="scene-illustration" id="missionArt" aria-hidden="true"></div>
+      <div class="mission-copy"><div class="eyebrow">هل هذا التصرف آمن؟</div><h1 id="questionText">نحافظ على أجهزتنا ومعلوماتنا</h1><p>اسحب البطاقة أو اضغط الزر المناسب</p></div>
+      
+    </div>
+    <div class="conveyor" aria-hidden="true"></div>
+  </section>
+
+  <section class="rocket-zone" aria-label="صاروخ ورائد فضاء متحرك">
+    <div class="rocket-wrap" id="rocket">
+      <div class="rocket-aura"></div>
+      <!-- الصاروخ ورائد الفضاء: رسوم vector أصلية داخل الكود -->
+      <svg class="rocket-svg" viewBox="0 0 340 500" role="img" aria-label="صاروخ ملوّن يطير، وفي نافذته رائد فضاء كرتوني يلوّح">
+        <defs>
+          <linearGradient id="shell" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".5" stop-color="#d7efff"/><stop offset="1" stop-color="#8bbef6"/></linearGradient>
+          <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff97c4"/><stop offset=".65" stop-color="#ff658d"/><stop offset="1" stop-color="#f54b79"/></linearGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#93ffec"/><stop offset=".7" stop-color="#65c9ff"/><stop offset="1" stop-color="#657fed"/></linearGradient>
+          <linearGradient id="fire" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffbd5"/><stop offset=".3" stop-color="#ffe76b"/><stop offset=".7" stop-color="#ff9848"/><stop offset="1" stop-color="#ff5b9f" stop-opacity="0"/></linearGradient>
+          <filter id="shine"><feGaussianBlur stdDeviation="5"/></filter>
+        </defs>
+        <ellipse cx="170" cy="418" rx="64" ry="63" fill="#64aaff" opacity=".24" filter="url(#shine)"/>
+        <g class="flame"><path d="M141 351Q111 423 167 493Q220 428 198 351Z" fill="url(#fire)" opacity=".95"/><path d="M155 364Q142 426 169 475Q198 411 182 364Z" fill="#fff5ab"/></g>
+        <g class="flame middle"><path d="M113 347Q90 395 126 449Q145 415 143 350Z" fill="#ffbb5b" opacity=".93"/><path d="M197 350Q202 417 219 452Q254 394 224 349Z" fill="#ffbb5b" opacity=".93"/></g>
+        <path d="M112 290Q67 304 45 377Q89 359 133 362L153 305Z" fill="url(#wing)" stroke="#4c3d86" stroke-width="7" stroke-linejoin="round"/>
+        <path d="M227 290Q274 304 296 377Q250 359 208 362L188 305Z" fill="url(#wing)" stroke="#4c3d86" stroke-width="7" stroke-linejoin="round"/>
+        <path d="M169 27C91 97 100 239 107 354Q170 387 233 354C240 239 249 97 169 27Z" fill="url(#shell)" stroke="#424078" stroke-width="8" stroke-linejoin="round"/>
+        <path d="M169 27Q120 75 109 139Q168 159 230 139Q216 74 169 27Z" fill="#ff789e" stroke="#424078" stroke-width="6"/>
+        <path d="M125 178Q112 258 128 343" stroke="#fff" stroke-width="9" opacity=".85" fill="none" stroke-linecap="round"/>
+        <path d="M219 180Q230 257 217 323" stroke="#6b9dde" stroke-width="6" opacity=".36" fill="none" stroke-linecap="round"/>
+        <path d="M107 339Q169 361 233 339L233 357Q170 391 107 357Z" fill="#6468c2" stroke="#414178" stroke-width="6"/>
+        <circle cx="170" cy="226" r="76" fill="#6c7acb" stroke="#393c78" stroke-width="9"/>
+        <circle cx="170" cy="226" r="65" fill="url(#glass)" stroke="#d5f9ff" stroke-width="6"/>
+        <!-- رائد فضاء داخل النافذة -->
+        <clipPath id="windowClip"><circle cx="170" cy="226" r="61"/></clipPath>
+        <g clip-path="url(#windowClip)">
+          <path d="M112 293Q117 253 160 249L186 249Q222 255 230 293" fill="#f8f6ff" stroke="#4f529b" stroke-width="5"/>
+          <path d="M137 271Q168 297 199 271L205 310H135Z" fill="#dfe1ff"/>
+          <path class="pilot-hand" d="M201 272Q215 246 218 224Q228 214 232 232Q232 262 220 283" fill="#fffaf5" stroke="#5b538b" stroke-width="5"/>
+          <ellipse cx="170" cy="217" rx="49" ry="52" fill="#fff" stroke="#4b4f91" stroke-width="6"/>
+          <ellipse cx="170" cy="219" rx="36" ry="36" fill="#ffdbb2" stroke="#6c5890" stroke-width="4"/>
+          <path d="M136 210Q146 178 171 181Q194 181 201 209" fill="#483d7e" opacity=".88"/>
+          <circle cx="155" cy="223" r="4.5" fill="#3a3569"/><circle cx="183" cy="223" r="4.5" fill="#3a3569"/>
+          <path d="M156 235Q169 245 183 235" fill="none" stroke="#a95078" stroke-width="4" stroke-linecap="round"/>
+          <ellipse cx="145" cy="234" rx="7" ry="4" fill="#ff9c9e" opacity=".8"/><ellipse cx="192" cy="234" rx="7" ry="4" fill="#ff9c9e" opacity=".8"/>
+          <path d="M134 193Q147 170 166 172" stroke="white" stroke-width="6" opacity=".7" fill="none" stroke-linecap="round"/>
+        </g>
+        <circle cx="170" cy="226" r="75" fill="none" stroke="#f3f1ff" stroke-width="4" stroke-dasharray="4 11" opacity=".8"/>
+        <path d="M169 306L175 319L190 321L179 331L182 345L169 338L156 345L159 331L148 321L163 319Z" fill="#ffdd64" stroke="#e99c52" stroke-width="3"/>
+        <circle cx="167" cy="103" r="9" fill="#ffe385" stroke="#fff6cf" stroke-width="3"/>
+        <path d="M91 350L77 365M250 350L263 365" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </section>
+  <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+  <div class="answer-row" id="answerRow">
+    <button class="choice safe" id="safeBtn" data-choice="safe" aria-label="سلوك آمن">
+      <span class="number">١</span><span class="choice-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4L40 11V22C40 32 34 39 24 44C14 39 8 32 8 22V11Z" fill="#44d9ab" stroke="#235b77" stroke-width="3"/><path d="M15 24L22 30L34 17" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+      <span><strong>سلوك آمن</strong><small>يزوّد الصاروخ بالطاقة</small></span>
+    </button>
+    <button class="choice unsafe" id="unsafeBtn" data-choice="unsafe" aria-label="سلوك غير آمن">
+      <span class="number">٢</span><span class="choice-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="16" width="25" height="26" rx="4" fill="#fa87a9" stroke="#814b89" stroke-width="3"/><path d="M8 15H40M18 9H31M17 25L31 36M31 25L17 36" fill="none" stroke="#783f78" stroke-width="3.7" stroke-linecap="round"/><path d="M18 16V10H31V16" fill="none" stroke="#814b89" stroke-width="3"/></svg></span>
+      <span><strong>غير آمن</strong><small>نرسله لإعادة التدوير</small></span>
+    </button>
+  </div>
+
+  <section class="victory" id="victory" aria-live="polite">
+    <!-- الكوكب النهائي لا يظهر في DOM المرئي إلا بعد إنهاء كل المهمات -->
+    <div class="final-planet" aria-hidden="true">
+      <svg viewBox="0 0 360 350">
+        <defs><radialGradient id="planetBase" cx="30%" cy="25%" r="80%"><stop stop-color="#a0fff2"/><stop offset=".4" stop-color="#79b5ff"/><stop offset=".7" stop-color="#9971ff"/><stop offset="1" stop-color="#5f368e"/></radialGradient><clipPath id="clipPlanet"><circle cx="181" cy="177" r="112"/></clipPath></defs>
+        <ellipse cx="180" cy="182" rx="174" ry="49" transform="rotate(-25 180 182)" fill="none" stroke="#e3b1ff" stroke-width="14" opacity=".85"/>
+        <circle cx="181" cy="177" r="120" fill="#a4b4ff" opacity=".18"/><circle cx="181" cy="177" r="112" fill="url(#planetBase)" stroke="#dbd6ff" stroke-width="6"/>
+        <g clip-path="url(#clipPlanet)">
+          <path d="M76 129Q118 88 140 118Q151 141 124 153Q108 161 126 186Q106 221 75 205Z" fill="#88ef9c"/>
+          <path d="M165 87Q238 71 258 108Q232 115 218 146Q197 158 183 142Z" fill="#a1ffac"/>
+          <path d="M199 198Q250 157 292 191Q281 241 238 276L183 276Q155 247 199 198Z" fill="#74e6b3"/>
+          <ellipse cx="121" cy="218" rx="23" ry="14" fill="#b4f6df" opacity=".8"/><ellipse cx="239" cy="134" rx="19" ry="9" fill="#dce6ff" opacity=".75"/>
+          <path d="M91 124Q162 80 218 103" stroke="#fff" stroke-width="13" stroke-linecap="round" fill="none" opacity=".45"/>
+        </g>
+        <path d="M37 244Q180 332 326 120" fill="none" stroke="#ffd58c" stroke-width="17" stroke-linecap="round" opacity=".86"/>
+        <path d="M36 245Q180 335 327 119" fill="none" stroke="#fff2ce" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+        <g fill="#fffbb3"><path d="M32 67L38 83L54 89L38 95L32 112L26 95L10 89L26 83Z"/><path d="M327 35L333 51L349 57L333 63L327 79L321 63L306 57L321 51Z"/><path d="M320 260L325 271L337 277L325 282L320 294L315 282L303 277L315 271Z"/></g>
+      </svg>
+    </div>
+    <div class="victory-message"><h2>وصلنا إلى كوكب الأمان!</h2><p>أنت بطل السلوك الرقمي الآمن! لقد حميت نفسك وجهازك ومعلوماتك.</p><button class="again" id="playAgain">العب من جديد</button></div>
+  </section>
+
+  <div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+    <div class="intro-box">
+      <svg class="intro-art" viewBox="0 0 220 166" aria-hidden="true"><path d="M110 7Q49 65 72 128H148Q172 65 110 7Z" fill="#f7faff" stroke="#24265b" stroke-width="6"/><path d="M110 7Q81 35 75 60H145Q138 35 110 7Z" fill="#fa82a9" stroke="#24265b" stroke-width="5"/><circle cx="110" cy="88" r="30" fill="#86d8ff" stroke="#30326c" stroke-width="6"/><circle cx="110" cy="88" r="20" fill="#ffe2bb"/><circle cx="103" cy="86" r="3.5" fill="#2f315a"/><circle cx="118" cy="86" r="3.5" fill="#2f315a"/><path d="M104 98Q111 104 118 98" fill="none" stroke="#b35a80" stroke-width="3" stroke-linecap="round"/><path d="M78 115L39 150L86 138M142 115L181 150L134 138" fill="#ff8aaf" stroke="#292d64" stroke-width="6"/><path d="M91 130L110 164L129 130" fill="#ffe777" stroke="#fff4aa" stroke-width="4"/><path d="M15 19L20 31L34 35L20 41L15 54L10 41L0 35L10 31Z" fill="#ffe38b"/><path d="M184 23L190 40L207 46L190 52L184 69L178 52L160 46L178 40Z" fill="#7af1ee"/></svg>
+      <div class="tag">مغامرة تعليمية لروضة الأطفال</div><h2 id="introTitle">إلى كوكب الأمان!</h2>
+      <p>مرحبًا يا أبطال الفضاء! ساعدوا رائدنا الصغير على معرفة التصرفات <b style="color:#98ffda">الآمنة</b> والتصرفات <b style="color:#ffc6e2">غير الآمنة</b>. كل إجابة صحيحة تعطي الصاروخ دفعة جديدة!</p>
+      <button class="start" id="startBtn">انطلق يا بطل!</button>
+<br><br>
+<p style="color:#ffe584">معلمتك‫:‬ نسيبه محيا</p>
+    </div>
+  </div>
+</div>
+<script>
+'use strict';
+// ألعاب تعليمية لا تحتاج إلى صور أو مكتبات أو اتصال بالإنترنت.
+const $ = id => document.getElementById(id);
+const totalItems = 11;
+const missions = [
+  {text:'طفل يستخدم الجهاز بجوار أحد والديه.',safe:true,art:'family'},
+  {text:'طفل يطلب المساعدة عند ظهور شيء غريب.',safe:true,art:'help'},
+  {text:'طفل يحمل الجهاز بكلتا يديه.',safe:true,art:'hold'},
+  {text:'طفل يغلق الجهاز بعد الانتهاء.',safe:true,art:'power'},
+  {text:'طفل يستخدم كلمات لطيفة مع الآخرين.',safe:true,art:'kind'},
+  {text:'طفل يرمي الجهاز على الأرض.',safe:false,art:'throw'},
+  {text:'طفل يضغط على رسالة من شخص مجهول.',safe:false,art:'unknown'},
+  {text:'طفل يستخدم جهاز شخص آخر دون استئذان.',safe:false,art:'ask'},
+  {text:'طفل يشارك صوره ومعلوماته مع شخص غريب.',safe:false,art:'share'},
+  {text:'طفل يكتب كلمات غير لطيفة لزميله.',safe:false,art:'mean'},
+  {text:'طفل يخفي الجهاز عن عائلته.',safe:false,art:'hide'}
+];
+// رسوم مصغرة أصلية، بخطوط كرتونية متناسقة لكل موقف.
+const svgStart='<svg viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">';
+const svgEnd='</svg>';
+const face=(x,y,r=17)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="#ffe0b5" stroke="#403f83" stroke-width="3"/><circle cx="${x-6}" cy="${y-2}" r="2.1" fill="#3f3e77"/><circle cx="${x+6}" cy="${y-2}" r="2.1" fill="#3f3e77"/><path d="M${x-5} ${y+7}q5 5 10 0" fill="none" stroke="#b15b81" stroke-width="2.5" stroke-linecap="round"/>`;
+const tablet=(x=37,y=43,w=48,h=47)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" fill="#41458c" stroke="#262957" stroke-width="3"/><rect x="${x+5}" y="${y+5}" width="${w-10}" height="${h-15}" rx="3" fill="#7ce7e5"/><circle cx="${x+w/2}" cy="${y+h-5}" r="2" fill="#fff"/>`;
+const device=(x=38,y=43)=>tablet(x,y);
+const spark=(x,y)=>`<path d="M${x} ${y-12}L${x+4} ${y-3}L${x+13} ${y}L${x+4} ${y+4}L${x} ${y+13}L${x-4} ${y+4}L${x-13} ${y}L${x-4} ${y-3}Z" fill="#ffdf78" stroke="#e9a15b" stroke-width="1.4"/>`;
+const illustrations={
+ family:()=>`${face(38,32,17)}${face(86,27,21)}<path d="M11 88Q13 55 38 56Q65 58 64 88M62 88Q63 53 89 53Q114 55 116 88" fill="#ff91be" stroke="#49437b" stroke-width="4"/>${tablet(37,60,49,45)}`,
+ help:()=>`${face(38,37,18)}<path d="M8 101Q11 63 38 64Q62 63 67 101" fill="#f8b1cc" stroke="#4a437f" stroke-width="4"/><path d="M72 15H104Q113 15 113 24V49Q113 57 104 57H94L83 68V57H72Q64 57 64 49V24Q64 15 72 15Z" fill="#fff" stroke="#625ca2" stroke-width="4"/><text x="89" y="46" font-size="32" text-anchor="middle" fill="#ac85da" font-weight="bold">?</text>${spark(98,85)}`,
+ hold:()=>`${tablet(31,19,58,65)}<path d="M25 70Q15 58 12 72Q13 92 34 94L45 84M96 70Q107 58 110 72Q110 92 87 94L76 84" fill="#ffdcb7" stroke="#4f4980" stroke-width="4" stroke-linecap="round"/>${spark(13,17)}${spark(106,17)}`,
+ power:()=>`${tablet(28,19,64,73)}<circle cx="60" cy="53" r="20" fill="#c4fff0" stroke="#478d9d" stroke-width="3"/><path d="M60 29V50M48 40a17 17 0 1 0 24 0" fill="none" stroke="#289979" stroke-width="5" stroke-linecap="round"/>${spark(101,20)}`,
+ kind:()=>`${face(30,65,19)}${face(92,65,19)}<path d="M53 14H100Q110 14 110 24V40Q110 50 100 50H82L72 61V50H53Q44 50 44 40V24Q44 14 53 14Z" fill="#fff" stroke="#6360a0" stroke-width="3.5"/><path d="M77 41Q58 29 67 23Q73 19 77 26Q82 19 88 23Q97 30 77 41" fill="#ff7c9f"/>`,
+ throw:()=>`${tablet(55,18,47,43)}<path d="M25 85Q40 51 54 53" fill="none" stroke="#ff79ab" stroke-width="5" stroke-dasharray="6 7" stroke-linecap="round"/><path d="M32 63L51 55L45 74" fill="none" stroke="#ff79ab" stroke-width="4" stroke-linejoin="round"/><path d="M12 94H110" stroke="#695ba3" stroke-width="5" stroke-linecap="round"/><path d="M69 83L75 74L81 86L90 77L91 92L80 89L71 95" fill="#ffdf79" stroke="#d77ca1" stroke-width="3"/>`,
+ unknown:()=>`${tablet(20,14,79,86)}<rect x="31" y="33" width="56" height="39" rx="5" fill="#fff" stroke="#7f79a9" stroke-width="2"/><path d="M33 36L59 53L85 36" fill="none" stroke="#887eae" stroke-width="3"/><circle cx="87" cy="25" r="16" fill="#ff94bc" stroke="#fff" stroke-width="3"/><text x="87" y="32" text-anchor="middle" font-size="22" fill="#fff" font-weight="bold">?</text>`,
+ ask:()=>`${tablet(39,29,52,62)}${face(23,33,13)}<path d="M8 78Q10 57 24 55Q35 55 38 68" fill="#ff8dba" stroke="#484279" stroke-width="3"/><path d="M89 15Q104 6 110 19Q116 36 97 40" fill="none" stroke="#fb7f9c" stroke-width="6" stroke-linecap="round"/><circle cx="97" cy="50" r="4" fill="#fb7f9c"/>`,
+ share:()=>`${tablet(13,24,63,69)}<circle cx="43" cy="45" r="10" fill="#ffdeb9"/><path d="M22 71Q25 54 43 55Q61 55 64 71" fill="#ff91b2"/><path d="M78 49L110 49M97 38L110 49L97 60" fill="none" stroke="#f56799" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="101" cy="22" r="13" fill="#765fa7"/><text x="101" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">?</text>`,
+ mean:()=>`${face(27,79,15)}<path d="M9 105Q10 91 27 91Q42 91 45 105" fill="#91b5ff"/><path d="M42 12H106Q115 12 115 22V55Q115 64 106 64H86L75 76V64H42Q33 64 33 55V22Q33 12 42 12Z" fill="#ffe0e5" stroke="#99719b" stroke-width="3.5"/><path d="M54 37L65 46L74 30L85 46L99 34" stroke="#ea5a8d" stroke-width="5" fill="none" stroke-linecap="round"/>`,
+ hide:()=>`${face(58,32,18)}<path d="M24 101Q25 60 58 61Q95 62 98 101" fill="#be9ff4" stroke="#4e4380" stroke-width="4"/>${tablet(63,72,32,31)}<path d="M70 80L93 81" stroke="#a5ffe2" stroke-width="3"/><path d="M7 77Q16 67 22 75M107 75Q114 66 118 77" fill="none" stroke="#ffcd80" stroke-width="5" stroke-linecap="round"/>`
+};
+let queue=[], index=0, locked=false, soundOn=true, started=false, finished=false, audioCtx=null, feedbackTimer=0, winInterval=0;
+const arabicNumber=n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[Number(d)]);
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function reset(){clearTimeout(feedbackTimer);clearInterval(winInterval);window.speechSynthesis?.cancel();queue=shuffle(missions);index=0;locked=false;finished=false;started=true;$('game').classList.remove('completed');$('rocket').className='rocket-wrap';$('mission').style.display='';$('answerRow').style.display='';$('feedback').classList.remove('visible');$('safeBtn').disabled=false;$('unsafeBtn').disabled=false;setProgress();renderMission();fireworks.length=0;particles.length=0;boostUntil=0}
+function setProgress(){$('progressText').textContent=arabicNumber(index)+' من '+arabicNumber(totalItems);$('progressFill').style.width=(index/totalItems*100)+'%'}
+function renderMission(){const m=queue[index];if(!m)return;$('questionText').textContent=m.text;$('missionArt').innerHTML=svgStart+illustrations[m.art]()+svgEnd;$('missionLabel').textContent='المهمة '+arabicNumber(index+1)+' من '+arabicNumber(totalItems);const c=$('questionCard');c.classList.remove('slide-in');void c.offsetWidth;c.classList.add('slide-in');$('feedback').classList.remove('visible');}
+function showFeedback(msg,positive){clearTimeout(feedbackTimer);const f=$('feedback');f.textContent=msg;f.className='feedback visible '+(positive?'good':'try');feedbackTimer=setTimeout(()=>f.classList.remove('visible'),1300)}
+function playTone(freq,dur,type='sine',vol=.09,when=0,slide=0){if(!soundOn||!audioCtx)return;const t=audioCtx.currentTime+when;const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type=type;osc.frequency.setValueAtTime(freq,t);if(slide)osc.frequency.exponentialRampToValueAtTime(Math.max(30,freq+slide),t+dur);gain.gain.setValueAtTime(.0001,t);gain.gain.exponentialRampToValueAtTime(vol,t+.017);gain.gain.exponentialRampToValueAtTime(.0001,t+dur);osc.connect(gain).connect(audioCtx.destination);osc.start(t);osc.stop(t+dur+.025)}
+function noise(dur=.5,vol=.08){if(!soundOn||!audioCtx)return;let len=Math.floor(audioCtx.sampleRate*dur),buffer=audioCtx.createBuffer(1,len,audioCtx.sampleRate),data=buffer.getChannelData(0);for(let i=0;i<len;i++)data[i]=(Math.random()*2-1)*(1-i/len);const s=audioCtx.createBufferSource(),g=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();s.buffer=buffer;filter.type='lowpass';filter.frequency.value=1100;g.gain.value=vol;s.connect(filter).connect(g).connect(audioCtx.destination);s.start()}
+function initAudio(){if(!soundOn)return;try{audioCtx??=new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume()}catch(e){soundOn=false;refreshSoundButton()}}
+function playGood(){playTone(520,.18,'sine',.1);playTone(660,.2,'triangle',.095,.13);playTone(880,.28,'triangle',.1,.26);noise(.22,.05)}
+function playOops(){playTone(300,.22,'triangle',.1,0,-115);playTone(200,.2,'sine',.08,.18,-60);noise(.15,.035)}
+function playVictory(){const notes=[523,659,784,1047,784,1047,1175,1319,1568];notes.forEach((n,i)=>playTone(n,.38,'triangle',.095,i*.17));noise(.9,.08)}
+function refreshSoundButton(){$('soundBtn').setAttribute('aria-label',soundOn?'إيقاف الأصوات':'تشغيل الأصوات');$('soundIcon').innerHTML=soundOn?'<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8q4 4 0 8M19 5q7 7 0 14"/>':'<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l6 6M23 9l-6 6"/>'}
+function readMission(){if(!started||finished)return;if(!('speechSynthesis'in window)){showFeedback('القراءة الصوتية غير متاحة على هذا الجهاز',false);return}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(queue[index].text+' هل هذا التصرف آمن؟');u.lang='ar-SA';u.rate=.83;u.pitch=1.23;u.volume=1;speechSynthesis.speak(u)}
+function flyCard(to){const card=$('questionCard').getBoundingClientRect(),target=to.getBoundingClientRect(),e=document.createElement('div');e.className='flying-card';e.textContent=queue[index].text;document.body.append(e);const x=card.left+card.width/2,y=card.top+card.height/2;e.style.left=x+'px';e.style.top=y+'px';e.style.transform='translate(-50%,-50%)';e.animate([{transform:'translate(-50%,-50%) scale(1) rotate(0)',opacity:1},{transform:`translate(calc(-50% + ${target.left+target.width/2-x}px),calc(-50% + ${target.top+target.height/2-y}px)) scale(.1) rotate(24deg)`,opacity:0}],{duration:680,easing:'cubic-bezier(.3,.2,.3,1)',fill:'forwards'}).onfinish=()=>e.remove()}
+function answer(guess){if(!started||finished||locked)return;initAudio();const m=queue[index],correct=(guess===m.safe);locked=true;$('safeBtn').disabled=$('unsafeBtn').disabled=true;if(correct){playGood();flyCard(m.safe?$('safeBtn'):$('unsafeBtn'));showFeedback(m.safe?'ممتاز! نزيد طاقة الصاروخ!':'أحسنت! أرسلنا التصرف غير الآمن للتدوير!',true);$('rocket').classList.remove('boost','bump');void $('rocket').offsetWidth;$('rocket').classList.add('boost');boostUntil=performance.now()+1300;let rect=$('rocket').getBoundingClientRect();burst(rect.left+rect.width/2,rect.top+rect.height*.64,65,['#fff59f','#a9ffec','#6dd8ff','#ff9ccd']);setTimeout(()=>{index++;setProgress();$('rocket').classList.remove('boost');if(index===queue.length){endGame()}else{renderMission();locked=false;$('safeBtn').disabled=$('unsafeBtn').disabled=false}},1150)}else{playOops();showFeedback('مذنب صغير! حاول مرة أخرى.',false);cometCollision();setTimeout(()=>{locked=false;$('safeBtn').disabled=$('unsafeBtn').disabled=false},1050)}}
+function cometCollision(){const rocket=$('rocket').getBoundingClientRect();const endX=rocket.left+rocket.width*.67,endY=rocket.top+rocket.height*.36;const el=document.createElement('div');el.className='hit-comet';el.innerHTML='<svg viewBox="0 0 170 120"><path d="M156 19Q102 21 86 50Q52 44 20 60Q64 73 91 84Q139 96 162 99Q126 79 132 59Q134 41 156 19Z" fill="#ff9d83" opacity=".55"/><path d="M156 12Q95 30 90 50Q59 46 9 66Q65 70 95 81L159 105Q132 78 135 59Z" fill="#ffc26d" opacity=".8"/><path d="M155 11Q101 40 93 57Q102 84 151 94Q164 63 155 11Z" fill="#ffed94" opacity=".9"/><circle cx="40" cy="65" r="26" fill="#ab8eff" stroke="#fff5ce" stroke-width="5"/><path d="M26 56L35 60M48 56L54 60" stroke="#4b3c7e" stroke-width="4" stroke-linecap="round"/><path d="M31 76Q40 68 48 77" fill="none" stroke="#60427e" stroke-width="3"/></svg>';document.body.append(el);el.style.left=(window.innerWidth+150)+'px';el.style.top=(endY-180)+'px';const dx=endX-(window.innerWidth+150),dy=180;el.animate([{transform:'translate(0,0) rotate(-12deg)',opacity:0},{opacity:1,offset:.15},{transform:`translate(${dx}px,${dy}px) rotate(22deg)`,opacity:1}],{duration:510,easing:'cubic-bezier(.5,0,.8,1)',fill:'forwards'}).onfinish=()=>{el.remove();const flash=document.createElement('div');flash.className='impact-flash';flash.style.left=endX+'px';flash.style.top=endY+'px';document.body.append(flash);flash.addEventListener('animationend',()=>flash.remove());$('rocket').classList.remove('bump');void $('rocket').offsetWidth;$('rocket').classList.add('bump');burst(endX,endY,24,['#ffe99e','#ffacc3','#a4b7ff']);setTimeout(()=>$('rocket').classList.remove('bump'),800)}}
+function endGame(){finished=true;locked=true;document.activeElement?.blur();window.scrollTo(0,0);$('game').classList.add('completed');$('rocket').classList.add('victory-fly');playVictory();burst(innerWidth*.5,innerHeight*.23,110,['#ffdb7b','#a2ffed','#ff95d3','#9eb1ff']);winInterval=setInterval(()=>{if(document.hidden)return;const x=innerWidth*(.12+Math.random()*.76),y=innerHeight*(.1+Math.random()*.48);firework(x,y);playTone(220+Math.random()*300,.19,'sine',.027,0,190)},680)}
+$('startBtn').addEventListener('click',()=>{initAudio();reset();$('intro').classList.add('hidden');$('intro').setAttribute('aria-hidden','true');playTone(650,.15,'sine',.08);playTone(980,.24,'triangle',.08,.13)});
+$('safeBtn').addEventListener('click',()=>answer(true));$('unsafeBtn').addEventListener('click',()=>answer(false));
+$('soundBtn').addEventListener('click',()=>{soundOn=!soundOn;refreshSoundButton();if(soundOn){initAudio();playTone(780,.2)}});
+$('restartBtn').addEventListener('click',()=>{clearInterval(winInterval);if(!started){$('intro').classList.remove('hidden');return}reset()});
+$('playAgain').addEventListener('click',()=>{reset();playTone(660,.14);playTone(880,.19,'triangle',.08,.14)});
+document.addEventListener('keydown',e=>{if(!started||finished||!$('intro').classList.contains('hidden')||e.altKey||e.ctrlKey)return;if(e.key==='1'||e.key==='١'){e.preventDefault();answer(true)}if(e.key==='2'||e.key==='٢'){e.preventDefault();answer(false)}if(e.key.toLowerCase()==='r')readMission()});
+// السحب والإفلات يعملان بالماوس واللمس، مع بقاء الأزرار أسهل للصغار.
+let dragging=null;
+$('questionCard').addEventListener('pointerdown',e=>{if(e.target.closest('button')||!started||locked||finished)return;dragging={id:e.pointerId,x:e.clientX,y:e.clientY,ghost:null};$('questionCard').setPointerCapture?.(e.pointerId)});
+$('questionCard').addEventListener('pointermove',e=>{if(!dragging||dragging.id!==e.pointerId)return;const d=dragging;if(!d.ghost&&Math.hypot(e.clientX-d.x,e.clientY-d.y)>12){d.ghost=document.createElement('div');d.ghost.className='drag-ghost';d.ghost.textContent=queue[index].text;document.body.append(d.ghost);$('questionCard').style.opacity='.5'}if(d.ghost){d.ghost.style.left=e.clientX+'px';d.ghost.style.top=e.clientY+'px';let under=document.elementFromPoint(e.clientX,e.clientY)?.closest('.choice');document.querySelectorAll('.choice').forEach(b=>b.classList.toggle('drag-over',b===under))}});
+function stopDrag(e){if(!dragging||dragging.id!==e.pointerId)return;const under=document.elementFromPoint(e.clientX,e.clientY)?.closest('.choice');dragging.ghost?.remove();dragging=null;$('questionCard').style.opacity='';document.querySelectorAll('.choice').forEach(b=>b.classList.remove('drag-over'));if(under&&!under.disabled)answer(under.dataset.choice==='safe')}
+$('questionCard').addEventListener('pointerup',stopDrag);$('questionCard').addEventListener('pointercancel',stopDrag);
+// فضاء متحرك بطبقات عميقة ومذنبات وشهب وجسيمات واحتفالات نارية.
+const canvas=$('space'),ctx=canvas.getContext('2d');let W=0,H=0,DPR=1,stars=[],particles=[],shooters=[],fireworks=[],boostUntil=0,last=0,lastShooting=0;
+const palette=['#ffffff','#a8ddff','#b6b3ff','#ffeead','#f5b1ed'];
+function resize(){W=window.innerWidth;H=window.innerHeight;DPR=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(DPR,0,0,DPR,0,0);stars=Array.from({length:Math.min(220,Math.max(105,Math.floor(W*H/5700)))},()=>newStar(true))}
+function newStar(init=false){return{x:Math.random()*W,y:init?Math.random()*H:-10,r:.45+Math.random()*2.05,z:.32+Math.random()*1.4,phase:Math.random()*6.28,color:palette[Math.floor(Math.random()*palette.length)]}}
+function burst(x,y,count,colors){for(let i=0;i<count;i++){let a=Math.random()*Math.PI*2,s=2.5+Math.random()*7.8,life=32+Math.random()*43;particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life,max:life,c:colors[Math.floor(Math.random()*colors.length)],r:1.5+Math.random()*4,gravity:.02+Math.random()*.04})}if(particles.length>800)particles.splice(0,particles.length-800)}
+function firework(x,y){const colors=['#ffe78b','#ff81c0','#6fe6ff','#8dffa9','#f2b4ff'];const color=colors[Math.floor(Math.random()*colors.length)];for(let i=0;i<73;i++){const angle=i/73*Math.PI*2,s=1.8+Math.random()*4.3,life=44+Math.random()*50;fireworks.push({x,y,vx:Math.cos(angle)*s,vy:Math.sin(angle)*s,life,max:life,c:color,r:1.5+Math.random()*2.6})}if(fireworks.length>900)fireworks.splice(0,fireworks.length-900)}
+function spawnShooter(){shooters.push({x:Math.random()*W,y:-30,vx:-2-Math.random()*3,vy:5+Math.random()*4,life:100+Math.random()*30,color:Math.random()>.5?'#95eaff':'#ffbdde',len:70+Math.random()*140});if(shooters.length>7)shooters.shift()}
+function animate(t){requestAnimationFrame(animate);if(!last)last=t;let dt=Math.min(2.5,(t-last)/16.66);last=t;ctx.clearRect(0,0,W,H);const speeding=t<boostUntil,win=finished,starSpeed=win?1.65:speeding?11:1.0;
+  for(const s of stars){s.y+=starSpeed*s.z*dt*.42;if(s.y>H+5){s.y=-7;s.x=Math.random()*W}const alpha=.36+.55*(.5+.5*Math.sin(t*.0017+s.phase));ctx.globalAlpha=alpha;ctx.fillStyle=s.color;ctx.beginPath();ctx.arc(s.x,s.y,s.r*(speeding?1.12:1),0,Math.PI*2);ctx.fill();if(s.r>1.5){ctx.globalAlpha=alpha*.6;ctx.fillRect(s.x-.5,s.y-5,.9,10);ctx.fillRect(s.x-5,s.y-.5,10,.9)}if(speeding){ctx.strokeStyle=s.color;ctx.globalAlpha=.23;ctx.lineWidth=s.r;ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(s.x,s.y+20*s.z);ctx.stroke()}}
+  ctx.globalAlpha=1;
+  if(t-lastShooting>2500+Math.random()*1800){spawnShooter();lastShooting=t}
+  shooters=shooters.filter(s=>s.life>0&&s.x>-300&&s.y<H+200);for(const s of shooters){s.x+=s.vx*dt;s.y+=s.vy*dt;s.life-=dt;const grad=ctx.createLinearGradient(s.x-s.vx/s.vy*s.len,s.y-s.len,s.x,s.y);grad.addColorStop(0,'transparent');grad.addColorStop(.6,s.color+'55');grad.addColorStop(1,s.color);ctx.strokeStyle=grad;ctx.lineWidth=4;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(s.x+s.len*.34,s.y-s.len);ctx.lineTo(s.x,s.y);ctx.stroke();ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(s.x,s.y,3,0,7);ctx.fill()}
+  for(const a of [particles,fireworks]){for(let i=a.length-1;i>=0;i--){const p=a[i];p.x+=p.vx*dt;p.y+=p.vy*dt;p.vx*=.985;p.vy*=.985;p.vy+=(p.gravity??.04)*dt;p.life-=dt;if(p.life<=0){a.splice(i,1);continue}ctx.globalAlpha=Math.min(1,p.life/(p.max*.55));ctx.fillStyle=p.c;ctx.shadowColor=p.c;ctx.shadowBlur=9;ctx.beginPath();ctx.arc(p.x,p.y,p.r*(.5+p.life/p.max*.5),0,Math.PI*2);ctx.fill()}}
+  ctx.shadowBlur=0;ctx.globalAlpha=1;
+}
+window.addEventListener('resize',resize);resize();requestAnimationFrame(animate);
+// البداية تحافظ على إخفاء الكوكب ولا تطلب اتصالًا بالإنترنت.
+setProgress();refreshSoundButton();
+</script>
+</body>
+</html>
